@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import App from "./App";
+import FinancialCheckIns from "./pages/FinancialCheckIns";
 import Tasks from "./pages/Tasks";
 import AppThemeProvider from "./theme/AppThemeProvider";
 
@@ -26,10 +27,11 @@ if (rootElement) {
                     <Routes>
                         <Route path="/" element={<App />}>
                             <Route index element={<Tasks />} />
+                            <Route path="financial-check-ins" element={<FinancialCheckIns />} />
                         </Route>
                     </Routes>
                 </BrowserRouter>
             </AppThemeProvider>
-        </QueryClientProvider>,
+        </QueryClientProvider>
     );
 }

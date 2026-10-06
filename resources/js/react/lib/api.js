@@ -34,4 +34,11 @@ export const api = {
     createTask: (data) => request("POST", "/tasks", data),
     updateTask: (id, data) => request("PATCH", `/tasks/${id}`, data),
     deleteTask: (id) => request("DELETE", `/tasks/${id}`),
+
+    // Financial Check-Ins
+    getFinancialCheckIns: () => request("GET", "/financial-check-ins"),
+    getFinancialCheckIn: (id) => request("GET", `/financial-check-ins/${id}`),
+    createFinancialCheckIn: (data) => request("POST", "/financial-check-ins", data),
+    updateFinancialCheckIn: (id, data) => request("PATCH", `/financial-check-ins/${id}`, data),
+    deleteFinancialCheckIn: (id) => request("DELETE", `/financial-check-ins/${id}`),
 };

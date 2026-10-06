@@ -150,3 +150,80 @@ Onboarding a new member well is critical; properly set-up members are far more l
 ### Member Financial Wellness Check-In
 
 Credit unions differentiate from banks on member wellbeing. Build a tool where a member (or a staff member on their behalf) can log a periodic financial check-in: income, rough monthly expenses by category (housing, food, transport, debt payments), and savings. The tool should surface something useful from that data, whatever makes sense to the candidate.
+
+# Member Financial Wellness Check-In Feature
+
+## Overview
+
+The Member Financial Wellness Check-In is a simple tool for tracking a member's financial situation over time.
+Members can record their monthly income, expenses, debt payments, and savings.
+The application then summarizes their financial position and highlights useful trends, including remaining money, savings rate, and debt-to-income ratio.
+The goal is to provide a lightweight financial wellness snapshot and derive useful insights and metrics.
+
+## Features
+
+### Assumptions
+
+The following assumptions were made to keep the feature focused and within the scope:
+
+- A financial check-in represents one calendar month.
+- Each month can have only one check-in.
+- The `check in date` represents the month of the check-in and is stored as the first day of that month (for example, `2026-10-01` represents October 2026).
+  Formatting of dates is simplified to avoid time zone considerations.
+- Financial amounts are entered and displayed as Canadian dollars (CAD).
+- Monetary values are stored in the database as integer cents to avoid floating-point precision issues.
+- The React UI converts between dollars and cents at the API level.
+- Expense categories are intentionally broad:
+    - Housing
+    - Food
+    - Transportation
+    - Debt payments
+- Savings is tracked separately from expenses.
+- Authentication and staff-member entry on behalf of a member were considered outside the scope of this implementation.
+- The metrics for financial check-ins are based on the entered data to provide insights instead of giving a financial advice. Also some benchmarks for the savings or DTI rates would be agreat edition but a separate implementation.
+- The financial check-in charts are line charts (as an example of visual representation on the page) and a part of the summary to show the metrics in dynamic.
+- Can be a subject for improvement of the feature: conversion on the front-end side; layout of the summary and financial history sections on the page; expense structure with a drill down option etc.
+
+### Financial Wellness Features
+
+#### Financial Check-In Management
+
+Members can:
+
+- Create a monthly financial check-in.
+- Edit an existing check-in.
+- Delete a check-in.
+- View their check-in history.
+- View trends in charts based on their check-in log history.
+
+#### Financial Summary
+
+The latest check-in provides a summary of:
+
+- Income
+- Total expenses
+- Remaining money
+- Savings rate
+- Debt-to-income ratio
+
+#### Financial Calculations
+
+Total expenses: Housing + Food + Transportation + Debt payments
+
+Remaining: Income - Total expenses - Savings
+
+Savings rate: Savings / Income × 100
+
+Debt-to-income ratio: Debt payments / Income × 100
+
+#### Financial Trends
+
+When multiple check-ins are available, the application displays charts showing how the member's financial position changes over time, including:
+
+- Income
+- Total expenses
+- Remaining money
+- Savings rate
+- Debt-to-income ratio
+
+This enhancement builds on the historical check-in data to help members identify financial trends in dynamic in addtion to viewing each monthly financial check-in in isolation.
